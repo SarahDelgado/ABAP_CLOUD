@@ -29,9 +29,27 @@ CLASS zcl_sdm_primera_clase IMPLEMENTATION.
     DATA lv_total TYPE I.
     lv_total = lv_number + lv_number2.
 
-    "Sacar información por consola"
+    "Mostrar información por consola"
+    OUT->write( |Variable de lv edad: { lv_number } Variable de lv_total: { lv_total } | ).
 
-    OUT->write( lv_total ).
+
+    DATA: lv_string TYPE STRING,
+          lv_int TYPE I,
+          lv_fecha TYPE D,
+          lv_dec TYPE P LENGTH 8 DECIMALS 2 VALUE '300.99',
+          lv_car TYPE C LENGTH 10 VALUE 'experis'.
+
+         lv_fecha = '20260512'.
+         lv_string = '20260512'.
+
+         OUT->WRITE( lv_string ).
+         OUT->WRITE( lv_int ).
+         OUT->WRITE( lv_fecha ).
+         OUT->WRITE( lv_dec ).
+         OUT->WRITE( lv_car ).
+
+
+
 
   ENDMETHOD.
 
