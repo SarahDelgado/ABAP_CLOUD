@@ -15,21 +15,22 @@ ENDCLASS.
 CLASS zcl_sdm_primera_clase IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 
-    "Tipo cadena de texto"
+    "Tipo cadena de texto
     DATA lv_name TYPE string.
     lv_name = 'Pedro'.
     DATA lv_name2 TYPE string VALUE 'Laura'.
 
-    "Tipo entero I"
+    "Tipo entero I
     DATA lv_number TYPE I.
     lv_number = 26.
     DATA lv_number2 TYPE I VALUE 33.
 
-    "Suma de variables"
+    "Suma de variables
     DATA lv_total TYPE I.
     lv_total = lv_number + lv_number2.
 
-    "Mostrar información por consola"
+    "Mostrar información por consola
+    OUT->write( lv_number ).
     OUT->write( |Variable de lv edad: { lv_number } Variable de lv_total: { lv_total } | ).
 
 
