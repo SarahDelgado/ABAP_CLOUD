@@ -52,6 +52,8 @@ CLASS zcl_dominios_sdm IMPLEMENTATION.
 
   DATA ls_empleado2 TYPE ty_empleado.
 
+  "hola caracola
+
   out->write( ls_empleado_info ).
 
 
