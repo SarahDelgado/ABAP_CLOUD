@@ -60,13 +60,23 @@ CLASS zcl_tablas_sdm IMPLEMENTATION.
   ENDLOOP.
 
 
-  "Ejercicio usando una tabla de base de datos
-  "Rellenar una tabla interna con 4 filas de los datos que nos de la gana, filtracion de ciudades con la letra ñ
-  DATA ls_aeropuerto TYPE /dmo/airport.
+  "Ejercicio
+  "Rellenar una tabla interna con 4 filas de los datos que nos de la gana, filtracion de ciudades con la letra MC
   DATA lt_aeropuerto TYPE TABLE OF /dmo/airport.
 
+  DATA(ls_aeropuerto1) = VALUE /dmo/airport( airport_id = '1' name = 'Madrid Barajas' city = 'Madrid' country = 'ES' ).
+  INSERT ls_aeropuerto1 INTO TABLE lt_aeropuerto.
 
+  DATA ls_aeropuerto TYPE /dmo/airport.
+  DATA(lv_pattern) = `^M.*`.
 
+  LOOP AT lt_aeropuerto INTO ls_aeropuerto.
+
+    IF CONTAINS( val = ls_aeropuerto-city pcre = lv_pattern ).
+        out->write( ls_empleado ).
+    ENDIF.
+
+  ENDLOOP.
 
 
 
