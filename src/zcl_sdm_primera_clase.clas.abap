@@ -12,7 +12,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_sdm_primera_clase IMPLEMENTATION.
+CLASS ZCL_SDM_PRIMERA_CLASE IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 
     "Tipo cadena de texto
@@ -53,5 +55,4 @@ CLASS zcl_sdm_primera_clase IMPLEMENTATION.
 
 
   ENDMETHOD.
-
 ENDCLASS.

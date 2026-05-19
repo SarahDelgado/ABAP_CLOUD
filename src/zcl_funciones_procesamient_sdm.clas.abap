@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_funciones_procesamient_sdm IMPLEMENTATION.
+CLASS ZCL_FUNCIONES_PROCESAMIENT_SDM IMPLEMENTATION.
+
 
     METHOD if_oo_adt_classrun~main.
 

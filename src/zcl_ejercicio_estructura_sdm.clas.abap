@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_ejercicio_estructura_sdm IMPLEMENTATION.
+CLASS ZCL_EJERCICIO_ESTRUCTURA_SDM IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_dominios_sdm IMPLEMENTATION.
+CLASS ZCL_DOMINIOS_SDM IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

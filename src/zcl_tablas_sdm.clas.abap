@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_tablas_sdm IMPLEMENTATION.
+CLASS ZCL_TABLAS_SDM IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
@@ -44,8 +44,7 @@ CLASS zcl_tablas_sdm IMPLEMENTATION.
   DATA lt_empleado5 TYPE HASHED TABLE OF ty_empleado WITH UNIQUE KEY correo.
 
 
-  "RELLENAR LOS DATOS DE UNA TABLA
-  "De forma manual
+  "INSERTAR DATOS DE UNA TABLA
   "indicanco el indice
   DATA(ls_empleado) = VALUE ty_empleado( nombre = 'daniel' edad = 32 telefono = +3475657474 ).
   INSERT ls_empleado INTO lt_empleado INDEX 1.
@@ -54,7 +53,7 @@ CLASS zcl_tablas_sdm IMPLEMENTATION.
   "Sin indicar el indice, nos coloca la fila en la siguiente linea vacia
   INSERT ls_empleado INTO TABLE lt_empleado.
 
-  "Sacar datos de una tabla con un bucle
+  "ONTENER DATOS DE UNA TABLA CON UN BUCLE
   LOOP AT lt_empleado INTO ls_empleado.
     out->write( ls_empleado ).
   ENDLOOP.
@@ -77,6 +76,47 @@ CLASS zcl_tablas_sdm IMPLEMENTATION.
     ENDIF.
 
   ENDLOOP.
+
+
+  "EJERCICIO
+  "Crear una tabla nueva que recoja los datos de la tabla anterior con una columna nueva con un id progresivo
+  "Usar una filtracion
+
+
+
+  "OTRA FORMA DE INSERTAR DATOS EN UNA TABLA
+  DATA lt_empleado6 TYPE TABLE OF ty_empleado.
+  INSERT VALUE #(
+                    nombre = 'daniel'
+                    edad = 32
+                    telefono = '+3475657474'
+                    correo = 'kk1@email.com' ) INTO TABLE lt_empleado6.
+
+  "INSERTAR UNA LINEA EN BLANCO EN UNA TABLA
+   INSERT INITIAL LINE INTO TABLE lt_empleado6.
+
+  "HEREDAR ESCTRUCUTRA Y TIPOS DE UNA TABLA
+  DATA lt_empleado7 LIKE lt_empleado6.
+
+  "DUPLICAR CONTENIDO DE UNA TABLA A OTRA, COPIAR LOS DATOS DE UNA TABLA A OTRA
+  INSERT LINES OF lt_empleado6 INTO TABLE lt_empleado7.
+
+  "COPIA DESDE LA PRIMERA FILA HASTA LA FILA INDICADA EN EL TO DE UNA TABLA A OTRA
+  INSERT LINES OF lt_empleado6 TO 1 INTO TABLE lt_empleado6.
+
+  "COPIA LAS FILAS INDICADAS EN EL FROM TO DE UNA TABLA A OTRA
+  INSERT LINES OF lt_empleado6 FROM 2 TO 4 INTO TABLE lt_empleado7.
+
+  "APPEND añadir una fila por el final a una tabla
+  APPEND ls_empleado TO lt_empleado.
+  APPEND VALUE #(  ) TO lt_empleado.
+
+
+  DATA(lt_empleado8) = VALUE ty_empleado(
+                                            nombre = 'ana'
+                                            edad = 8
+                                            telefono = '325452'
+                                            correo = 'kkdfsdfsd').
 
 
 

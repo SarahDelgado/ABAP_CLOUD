@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_funciones_logicas_sdm IMPLEMENTATION.
+CLASS ZCL_FUNCIONES_LOGICAS_SDM IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
