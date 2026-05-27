@@ -116,7 +116,7 @@ CLASS ZCL_TABLAS_SDM IMPLEMENTATION.
                                             nombre = 'ana'
                                             edad = 8
                                             telefono = '325452'
-                                            correo = 'kkdfsdfsd').
+                                            correo = 'kkdfsdfsd' ).
 
 
 
