@@ -30,7 +30,7 @@ CLASS ZCL_TABLAS_SDM IMPLEMENTATION.
   "TABLAS
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  "DECLARAION DE TABLAS STANDARD
+  "DECLARACION DE TABLAS STANDARD
   "lt = LOCAL TABLE
   DATA lt_empleado TYPE STANDARD TABLE OF TY_EMPLEADO.
   DATA lt_empleado2 TYPE TABLE OF TY_EMPLEADO.
