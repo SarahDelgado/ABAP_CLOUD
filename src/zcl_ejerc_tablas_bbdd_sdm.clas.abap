@@ -21,7 +21,7 @@ CLASS zcl_ejerc_tablas_bbdd_sdm IMPLEMENTATION.
   "EJERCICIOS"
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  "Usando la tabla de base de datos /dmo/airoport.
+  "Usando la tabla de base de datos /dmo/airport.
 
   "1. Extraer todos los registros del campo country = UK.
 

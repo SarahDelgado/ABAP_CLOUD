@@ -57,8 +57,5 @@ CLASS zcl_tabla_rangos_sdm IMPLEMENTATION.
     ENDLOOP.
 
 
-
-
-
   ENDMETHOD.
 ENDCLASS.
