@@ -160,7 +160,7 @@ CLASS zcl_creadora_sdm IMPLEMENTATION.
 
     calcular_sueldo( ).
 
-    IF ls_prueba-id_empleado IS NOT INITIAL.
+    IF ls_prueba-id_empleado > 0.
       ls_prueba-id_empleado = id_empleado.
     ELSE.
       ex_id_empleado( ).
