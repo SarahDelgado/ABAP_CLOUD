@@ -103,7 +103,7 @@ CLASS zcl_creadora_sdm DEFINITION
     DATA certificaciones TYPE i. "Número de certificaciones del empleado
 
    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    "Ejercicio 2.4: Creación del método clacular_sueldo para calcular el sueldo del empleado y guardarlo en la estructura ls_prueba
+    "Ejercicio 2.4: Creación del método calcular_sueldo para calcular el sueldo del empleado y guardarlo en la estructura ls_prueba
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "! Calcula de forma interna el sueldo del empleado basándose en sus certificaciones y experiencia.
     "! El resultado se almacena directamente en el componente correspondiente de la estructura interna 'ls_prueba'.
