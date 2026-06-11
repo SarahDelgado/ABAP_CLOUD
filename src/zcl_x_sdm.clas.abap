@@ -20,12 +20,14 @@ CLASS zcl_x_sdm IMPLEMENTATION.
     DATA lt_conn_dest    TYPE STANDARD TABLE OF /lrn/connection WITH DEFAULT KEY.
     DATA lt_pass_dest    TYPE STANDARD TABLE OF /lrn/passflight WITH DEFAULT KEY.
     DATA lt_cargo_dest   TYPE STANDARD TABLE OF /lrn/cargoflight WITH DEFAULT KEY.
+    DATA lt_airport_dest TYPE STANDARD TABLE OF /lrn/airport WITH DEFAULT KEY.
 
     " 2. Limpiamos tus tablas actuales para empezar desde cero
     DELETE FROM /lrn/carrier.
     DELETE FROM /lrn/connection.
     DELETE FROM /lrn/passflight.
     DELETE FROM /lrn/cargoflight.
+    DELETE FROM /lrn/airport.
 
     " 3. Leemos de la tabla maestro de aerolíneas de SAP
     SELECT FROM /dmo/carrier
@@ -80,6 +82,39 @@ CLASS zcl_x_sdm IMPLEMENTATION.
            c~arrival_time
     INTO CORRESPONDING FIELDS OF TABLE @lt_cargo_dest.
 
+    " 6b. Leemos de la tabla maestro determinando la timezone con códigos 100% seguros de SAP (Máx 6 caracteres)
+    SELECT FROM /dmo/airport
+    FIELDS airport_id,
+           name,
+           city,
+           country,
+           CASE country
+             WHEN 'DE' THEN 'CET'          " Alemania
+             WHEN 'FR' THEN 'CET'          " Francia
+             WHEN 'AT' THEN 'CET'          " Austria
+             WHEN 'CH' THEN 'CET'          " Suiza
+             WHEN 'NL' THEN 'CET'          " Países Bajos
+             WHEN 'IT' THEN 'CET'          " Italia
+             WHEN 'ES' THEN 'CET'          " España
+             WHEN 'UK' THEN 'GMT'          " Reino Unido
+             WHEN 'RU' THEN 'UTC+3'        " Rusia (Moscú) -> Reemplazado MCK por UTC+3 para asegurar compatibilidad
+             WHEN 'US' THEN 'EST'          " Estados Unidos
+             WHEN 'CA' THEN 'EST'          " Canadá
+             WHEN 'MX' THEN 'CST'          " México
+             WHEN 'BR' THEN 'UTC-3'        " Brasil (Brasilia) -> Reemplazado BRST por el genérico infalible UTC-3
+             WHEN 'CU' THEN 'CST'          " Cuba
+             WHEN 'AU' THEN 'UTC+10'       " Australia (Sídney/Melbourne) -> Reemplazado AUSACT por el estándar UTC+10
+             WHEN 'ZW' THEN 'CAT'          " Zimbabue
+             WHEN 'SA' THEN 'AST'          " Arabia Saudita
+             WHEN 'JP' THEN 'JAPAN'        " Japón -> ¡CORREGIDO! (Evita el DUMP de JST, mide 5 caracteres)
+             WHEN 'SG' THEN 'UTC+8'        " Singapur -> (Evita el DUMP original de SGT, 5 caracteres)
+             WHEN 'MY' THEN 'UTC+8'        " Malasia -> (Misma zona que Singapur, 5 caracteres)
+             WHEN 'CN' THEN 'CHINA'        " China (5 caracteres exactos, estándar nativo de SAP)
+             WHEN 'TH' THEN 'UTC+7'        " Tailandia -> Reemplazado THA por el formato seguro UTC+7
+             ELSE 'UTC'                    " Por si acaso
+           END AS timzone
+    INTO CORRESPONDING FIELDS OF TABLE @lt_airport_dest.
+
     " 7. Insertamos los datos limpios en tus tablas locales
     IF lt_carrier_dest IS NOT INITIAL.
         INSERT /lrn/carrier FROM TABLE @lt_carrier_dest.
@@ -97,8 +132,12 @@ CLASS zcl_x_sdm IMPLEMENTATION.
         INSERT /lrn/cargoflight FROM TABLE @lt_cargo_dest.
     ENDIF.
 
+    IF lt_airport_dest IS NOT INITIAL.
+        INSERT /lrn/airport FROM TABLE @lt_airport_dest.
+    ENDIF.
+
     " 8. Mensaje de confirmación final
-    out->write( '¡Éxito total! Las 4 tablas (/LRN/) han sido limpiadas y cargadas con datos maestros.' ).
+    out->write( '¡Listo! Tablas actualizadas con zonas horarias globales estándar (JAPAN, CHINA, UTC+X).' ).
 
   ENDMETHOD.
 ENDCLASS.

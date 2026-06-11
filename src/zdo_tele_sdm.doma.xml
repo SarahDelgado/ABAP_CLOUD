@@ -3,12 +3,12 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DD01V>
-    <DOMNAME>ZDO_NOMBRE_SDM</DOMNAME>
+    <DOMNAME>ZDO_TELE_SDM</DOMNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
     <DATATYPE>CHAR</DATATYPE>
-    <LENG>000040</LENG>
-    <OUTPUTLEN>000040</OUTPUTLEN>
-    <DDTEXT>Dominio del nombre y apellido</DDTEXT>
+    <LENG>000015</LENG>
+    <OUTPUTLEN>000015</OUTPUTLEN>
+    <DDTEXT>Dominio del telefono</DDTEXT>
     <DOMMASTER>E</DOMMASTER>
    </DD01V>
   </asx:values>

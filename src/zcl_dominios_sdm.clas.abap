@@ -43,7 +43,7 @@ CLASS ZCL_DOMINIOS_SDM IMPLEMENTATION.
    "Ejercicio: Crear dominio y elemento de dato para cada uno
 
    TYPES: BEGIN OF ty_empleado,
-         nombre TYPE zde_nombre_sdm,
+*         nombre TYPE zde_nombre_sdm,
          edad TYPE I,
          telefono TYPE ZDE_TELEFONO_SDM,
          correo TYPE ZDE_CORREO_SDM,
