@@ -5,17 +5,21 @@ CLASS zcl_creadora_sdm DEFINITION
 
   PUBLIC SECTION.
 
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "Ejercicio 2.1: Creación del tipo para la tabla que va contener los datos del empleado.
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     TYPES tty_emp TYPE STANDARD TABLE OF ztab_eje_obj_sdm WITH EMPTY KEY.
 
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "Ejercicio 2.3: Creación del constructor de la clase
-    "! <p class="shorttext synchronized" lang="en"></p>
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "! Constructor de la clase.
     "!
-    "! @parameter iv_nombre | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_apellido | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_telefono | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_experiencia | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_certificaciones | <p class="shorttext synchronized" lang="en"></p>
+    "! @parameter iv_nombre | Nombre del empleado.
+    "! @parameter iv_apellido | Apellido del empleado.
+    "! @parameter iv_telefono | Telefono del empleado.
+    "! @parameter iv_experiencia | Experiencia del empleado.
+    "! @parameter iv_certificaciones | Certificaciones del empleado.
     METHODS constructor
       IMPORTING
         iv_nombre          TYPE zde_nombre_sdm
@@ -24,34 +28,29 @@ CLASS zcl_creadora_sdm DEFINITION
         iv_experiencia     TYPE i
         iv_certificaciones TYPE i.
 
-    "Ejercicio 2.4: Creación del método clacular_sueldo para calcular el sueldo del empleado y guardarlo en la estructura ls_prueba
-    "! <p class="shorttext synchronized" lang="en"></p>
-    "!
-    METHODS clacular_sueldo.
-
-    "Ejercicio 2.5: Creación del método ex_id_empleado para generar el siguiente id_empleado disponible.
-    "! <p class="shorttext synchronized" lang="en"></p>
-    "!
-    METHODS ex_id_empleado.
-
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "Ejercicio 2.6: Creación del método alta_empleado para actualizar la base datos con el nuevo empleado o modificar los datos de uno ya existente
-    "! <p class="shorttext synchronized" lang="en"></p>
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "! Realiza el alta de un nuevo empleado o la actualización de uno existente tras calcular su sueldo.
+    "! Si el empleado es nuevo, genera automáticamente un identificador único.
     "!
-    "! @parameter rv_mensaje | <p class="shorttext synchronized" lang="en"></p>
+    "! @parameter rv_mensaje | Mensaje de texto con el resultado de la operación.
     METHODS alta_empleado
       RETURNING
         VALUE(rv_mensaje) TYPE string.
 
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "Ejercicio 2.7: Creación del método modificacion para modificar los datos de un empleado que se encuentre en la base de datos
-    "! <p class="shorttext synchronized" lang="en"></p>
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "! Modifica los datos de un empleado existente en la base de datos tras validar su existencia.
     "!
-    "! @parameter iv_id_empleado | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_nombre | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_apellido | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_telefono | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_experiencia | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter iv_certificaciones | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter rv_mensaje | <p class="shorttext synchronized" lang="en"></p>
+    "! @parameter iv_id_empleado | Identificador único del empleado a modificar.
+    "! @parameter iv_nombre | Nuevo nombre del empleado.
+    "! @parameter iv_apellido | Nuevo apellido del empleado.
+    "! @parameter iv_telefono | Nuevo teléfono del empleado.
+    "! @parameter iv_experiencia | Nuevos años de experiencia del empleado.
+    "! @parameter iv_certificaciones | Nuevo número de certificaciones del empleado.
+    "! @parameter rv_mensaje | Mensaje de texto con el resultado de la operación.
     METHODS modificacion
       IMPORTING
         iv_id_empleado     TYPE i
@@ -63,22 +62,27 @@ CLASS zcl_creadora_sdm DEFINITION
       RETURNING
         VALUE(rv_mensaje)  TYPE string.
 
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "Ejercicio 2.8: Creación del método traer_lt para leer los empleados de la base de datos
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "! Lee y devuelve los registros de empleados desde la base de datos filtrando por ID.
+    "! Si el ID proporcionado es 0, recupera todos los empleados de la tabla.
     "!
-    "!
-    "! @parameter iv_id_empleado | <p class="shorttext synchronized" lang="en"></p>
-    "! @parameter rv_tabla | <p class="shorttext synchronized" lang="en"></p>
+    "! @parameter iv_id_empleado | Identificador del empleado a buscar (0 para traer todos).
+    "! @parameter rv_tabla | Tabla interna que contiene los registros encontrados.
     METHODS traer_lt
       IMPORTING
         iv_id_empleado  TYPE i
       RETURNING
         VALUE(rv_tabla) TYPE tty_emp.
 
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "Ejercicio 2.9: Creación del método traer_n_filas para leer n primeras filas de la base de datos de empleados
-    "! <p class="shorttext synchronized" lang="en"></p>
-    "!
-    "! @parameter iv_n_filas | Numero de filas a traer de la tabla de la base de datos
-    "! @parameter rv_tabla | Tabla que contiene los registros obtenidos de la base de datos
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "! Lee y devuelve un número máximo de registros (N primeras filas) desde la base de datos de empleados.
+    "! 
+    "! @parameter iv_n_filas | Numero máximo de filas a traer de la tabla de la base de datos.
+    "! @parameter rv_tabla | Tabla que contiene los registros obtenidos de la base de datos.
     METHODS traer_n_filas
       IMPORTING
         iv_n_filas      TYPE i
@@ -88,12 +92,29 @@ CLASS zcl_creadora_sdm DEFINITION
 
   PROTECTED SECTION.
   PRIVATE SECTION.
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""
     "Ejercicio 2.2: Atributos privados de la clase
+    """""""""""""""""""""""""""""""""""""""""""""""""""
     DATA lt_registro     TYPE tty_emp. "Tabla interna de trabajo para las lecturas
     DATA ls_prueba       TYPE ztab_eje_obj_sdm. "Estructura de trabajo con los datos del empleado actual
-    DATA experiencia     TYPE i. "Años de experiencia
+    DATA experiencia     TYPE i. "Años de experiencia del empleado
     DATA id_empleado     TYPE i. "ID del empleado (para modificaciones)
-    DATA certificaciones TYPE i. "Número de certificaciones
+    DATA certificaciones TYPE i. "Número de certificaciones del empleado
+
+   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "Ejercicio 2.4: Creación del método clacular_sueldo para calcular el sueldo del empleado y guardarlo en la estructura ls_prueba
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "! Calcula de forma interna el sueldo del empleado basándose en sus certificaciones y experiencia.
+    "! El resultado se almacena directamente en el componente correspondiente de la estructura interna 'ls_prueba'.
+    METHODS calcular_sueldo.
+
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "Ejercicio 2.5: Creación del método ex_id_empleado para generar el siguiente id_empleado disponible.
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "! Busca el valor máximo del ID de empleado en la base de datos para calcular y asignar el siguiente ID secuencial disponible.
+    "! Si la tabla está vacía, inicializa el ID con el valor 1.
+    METHODS ex_id_empleado.
 
 ENDCLASS.
 
@@ -113,7 +134,7 @@ CLASS zcl_creadora_sdm IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD clacular_sueldo.
+  METHOD calcular_sueldo.
 
     me->ls_prueba-sueldo = ( certificaciones * 50 + experiencia * 100 ) + 1000.
 
@@ -137,7 +158,7 @@ CLASS zcl_creadora_sdm IMPLEMENTATION.
 
   METHOD alta_empleado.
 
-    clacular_sueldo( ).
+    calcular_sueldo( ).
 
     IF ls_prueba-id_empleado IS NOT INITIAL.
       ls_prueba-id_empleado = id_empleado.
