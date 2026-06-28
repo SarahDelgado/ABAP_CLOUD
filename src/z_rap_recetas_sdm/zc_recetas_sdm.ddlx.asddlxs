@@ -1,0 +1,151 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'NombreReceta'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Categoria'
+annotate view ZC_RECETAS_SDM with
+{
+  @EndUserText.label: 'ID de Receta'
+  @UI.facet: [ {
+    label: 'Informacion General', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'ID de Receta'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'ID de Receta'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  RecetaID;
+  
+  @EndUserText.label: 'Nombre Receta'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Nombre Receta'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'Nombre Receta'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  NombreReceta;
+  
+  @EndUserText.label: 'Categoria'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Categoria'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Categoria'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  Categoria;
+  
+  @EndUserText.label: 'Tiempo Preparacion'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Tiempo Preparacion'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Tiempo Preparacion'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  TiempoPrep;
+  
+  @EndUserText.label: 'Dificultad'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Dificultad'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Dificultad'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Dificultad;
+  
+  @EndUserText.label: 'Calorias'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Calorias'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Calorias'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  Calorias;
+  
+  @EndUserText.label: 'Publicada'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'Publicada'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'Publicada'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  Publicada;
+  
+  @EndUserText.label: 'Descripcion'
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'Descripcion'
+  } ]
+  @UI.lineItem: [ {
+    position: 80 , 
+    label: 'Descripcion'
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  Descripcion;
+  
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  CreatedBy;
+  
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  CreatedAt;
+  
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  LastChangedBy;
+  
+  @UI.identification: [ {
+    position: 120 
+  } ]
+  LastChangedAt;
+  
+  @UI.identification: [ {
+    position: 130 
+  } ]
+  LocalLastChangedAt;
+}

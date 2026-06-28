@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_VUELOS_SDM'
+@MappingRole: true
+define role ZC_VUELOS_SDM {
+  grant select on ZC_VUELOS_SDM
+  where INHERITING CONDITIONS FROM ENTITY ZI_VUELOS_SDM REPLACING { ROOT WITH _BaseEntity };
+}

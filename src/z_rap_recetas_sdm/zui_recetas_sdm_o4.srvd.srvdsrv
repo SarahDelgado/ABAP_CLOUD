@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_RECETAS_SDM'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_RECETAS_SDM'
+  }
+}
+define service ZUI_RECETAS_SDM_O4 provider contracts odata_v4_ui {
+  expose ZC_RECETAS_SDM;
+}

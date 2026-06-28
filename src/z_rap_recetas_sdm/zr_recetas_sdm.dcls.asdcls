@@ -1,0 +1,7 @@
+@EndUserText.label: 'ZR_RECETAS_SDM'
+@MappingRole: true
+define role ZR_RECETAS_SDM {
+  grant select on ZR_RECETAS_SDM
+  //where TRUE;
+  where Publicada = 'X';
+}

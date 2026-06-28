@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_VUELOS_SDM'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_VUELOS_SDM'
+  }
+}
+define service ZUI_VUELOS_SDM_O4 provider contracts odata_v4_ui {
+  expose ZC_VUELOS_SDM;
+}

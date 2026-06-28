@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_ALUMNOS2_SDM'
+@MappingRole: true
+define role ZC_ALUMNOS2_SDM {
+  grant select on ZC_ALUMNOS2_SDM
+  where INHERITING CONDITIONS FROM ENTITY ZR_ALUMNOS2_SDM REPLACING { ROOT WITH _BaseEntity };
+}

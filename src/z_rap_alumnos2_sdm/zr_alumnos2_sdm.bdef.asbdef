@@ -1,0 +1,55 @@
+managed implementation in class ZBP_R_ALUMNOS2_SDM unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_ALUMNOS2_SDM alias ZrAlumnos2Sdm
+persistent table zalumnos2_sdm
+extensible
+draft table zalumnos2_sdm_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+{
+  field ( mandatory : create )
+  AlumnoID;
+
+  field ( readonly )
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  AlumnoID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zalumnos2_sdm corresponding extensible
+    {
+      AlumnoID           = ALUMNO_ID;
+      Nombre             = NOMBRE;
+      Apellidos          = APELLIDOS;
+      Email              = EMAIL;
+      FechaNac           = FECHA_NAC;
+      Ciudad             = CIUDAD;
+      CursoActual        = CURSO_ACTUAL;
+      NotaMedia          = NOTA_MEDIA;
+      Activo             = ACTIVO;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+}

@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_RECETAS_SDM'
+@MappingRole: true
+define role ZC_RECETAS_SDM {
+  grant select on ZC_RECETAS_SDM
+  where INHERITING CONDITIONS FROM ENTITY ZR_RECETAS_SDM REPLACING { ROOT WITH _BaseEntity };
+}
