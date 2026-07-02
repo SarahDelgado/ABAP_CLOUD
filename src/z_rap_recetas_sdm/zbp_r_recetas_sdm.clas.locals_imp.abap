@@ -8,7 +8,9 @@ CLASS LHC_ZR_RECETAS_SDM DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
       validateTiempo FOR VALIDATE ON SAVE
             IMPORTING keys FOR ZrRecetasSdm~validateTiempo,
       setPublicada FOR DETERMINE ON MODIFY
-            IMPORTING keys FOR ZrRecetasSdm~setPublicada.
+            IMPORTING keys FOR ZrRecetasSdm~setPublicada,
+      setInitialCategoria FOR DETERMINE ON SAVE
+            IMPORTING keys FOR ZrRecetasSdm~setInitialCategoria.
 ENDCLASS.
 
 CLASS LHC_ZR_RECETAS_SDM IMPLEMENTATION.
@@ -42,16 +44,21 @@ CLASS LHC_ZR_RECETAS_SDM IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD setPublicada.
-    DATA lt_recetas_update TYPE TABLE FOR UPDATE zr_recetas_sdm\\ZrRecetasSdm.
-    "Mapear las claves recibidas y asignar el valor automático 'X' (abap_true)
-    lt_recetas_update = VALUE #( FOR key IN keys (
+    MODIFY ENTITIES OF zr_recetas_sdm IN LOCAL MODE
+      ENTITY ZrRecetasSdm
+        UPDATE FIELDS ( Publicada ) WITH VALUE #( FOR key IN keys (
         %tky      = key-%tky
         Publicada = abap_true
     ) ).
-    "Ejecutar la modificación en modo local
+  ENDMETHOD.
+
+  METHOD setInitialCategoria.
     MODIFY ENTITIES OF zr_recetas_sdm IN LOCAL MODE
       ENTITY ZrRecetasSdm
-        UPDATE FIELDS ( Publicada ) WITH lt_recetas_update.
+        UPDATE FIELDS ( Categoria ) WITH VALUE #( FOR key IN keys (
+        %tky      = key-%tky
+        Categoria = 'N'
+    ) ).
   ENDMETHOD.
 
 ENDCLASS.

@@ -19,7 +19,8 @@ authorization master( global )
    LastChangedBy,
    LastChangedAt,
    LocalLastChangedAt,
-   Publicada;
+   Publicada,
+   Categoria;
 
   field ( readonly : update )
    RecetaID;
@@ -27,6 +28,8 @@ authorization master( global )
   validation validateTiempo on save { create; update; }
 
   determination setPublicada on modify { create; }
+
+  determination setInitialCategoria on save { create; }
 
   create;
   update;
