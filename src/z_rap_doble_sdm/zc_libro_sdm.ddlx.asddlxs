@@ -1,0 +1,69 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Libro',
+    typeNamePlural: 'Libros',
+    title: { type: #STANDARD, value: 'Titulo' },
+    description: { type: #STANDARD, value: 'Autor' }
+  }
+}
+annotate view ZC_LIBRO_SDM with
+{
+  /* --- Configuración de la Pantalla (Object Page) --- */
+  @UI.facet: [
+    {
+      id: 'DatosLibro',
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Detalles del Libro',
+      position: 10
+    }
+  ]
+
+  /* --- Campos --- */
+  @UI.hidden: true
+  LibroId;
+
+  @UI.hidden: true
+  BibliotecaId;
+
+  @EndUserText.label: 'Título del Libro'
+  @UI: { lineItem:       [ { position: 10 } ],
+         identification: [ { position: 10 } ] }
+  Titulo;
+
+  @EndUserText.label: 'Autor'
+  @UI: { lineItem:       [ { position: 20 } ],
+         identification: [ { position: 20 } ] }
+  Autor;
+
+  @EndUserText.label: 'Género Literario'
+  @UI: { lineItem:       [ { position: 30 } ],
+         identification: [ { position: 30 } ] }
+  Genero;
+
+  @EndUserText.label: 'Código ISBN'
+  @UI: { identification: [ { position: 40 } ] }
+  Isbn;
+
+  @EndUserText.label: 'Fecha de Publicación'
+  @UI: { lineItem:       [ { position: 50 } ],
+         identification: [ { position: 50 } ] }
+  FechaPublicacion;
+
+  @EndUserText.label: 'Editorial'
+  @UI: { identification: [ { position: 60 } ] }
+  Editorial;
+
+  @EndUserText.label: 'Disponibilidad'
+  @UI: { lineItem:       [ { position: 70 } ],
+         identification: [ { position: 70 } ] }
+  Disponible;
+
+  @EndUserText.label: 'Activo'
+  @UI: { lineItem:       [ { position: 80 } ],
+         identification: [ { position: 80 } ] }
+  Activo;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

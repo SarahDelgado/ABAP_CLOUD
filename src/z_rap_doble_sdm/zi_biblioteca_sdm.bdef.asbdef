@@ -1,0 +1,94 @@
+managed implementation in class zbp_i_biblioteca_sdm unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_BIBLIOTECA_SDM alias Biblioteca
+persistent table zbiblioteca_sdm
+draft table zbibliotec_sdm_d
+lock master
+total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) BibliotecaId;
+
+  field ( readonly )
+    CreatedBy,
+    CreatedAt,
+    LastChangedBy,
+    LastChangedAt,
+    LocalLastChangedAt;
+
+  association _Libros { create; with draft; }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+
+  mapping for zbiblioteca_sdm
+  {
+    BibliotecaId = biblioteca_id;
+    Nombre = nombre;
+    Direccion = direccion;
+    Telefono = telefono;
+    Email = email;
+    Responsable = responsable;
+    FechaAlta = fecha_alta;
+    Activa = activa;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}
+
+define behavior for ZI_LIBRO_SDM alias Libro
+persistent table zlibro_sdm
+draft table zlibro_sdm_d
+lock dependent by _Biblioteca
+authorization dependent by _Biblioteca
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) LibroId;
+
+  field ( readonly )
+    BibliotecaId,
+    CreatedBy,
+    CreatedAt,
+    LastChangedBy,
+    LastChangedAt,
+    LocalLastChangedAt;
+
+  association _Biblioteca { with draft; }
+
+  // Mapeo exhaustivo de campos CDS -> Tabla Persistente
+  mapping for zlibro_sdm
+  {
+    LibroId = libro_id;
+    BibliotecaId = biblioteca_id;
+    Titulo = titulo;
+    Autor = autor;
+    Genero = genero;
+    Isbn = isbn;
+    FechaPublicacion = fecha_publicacion;
+    Editorial = editorial;
+    Disponible = disponible;
+    Activo = activo;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

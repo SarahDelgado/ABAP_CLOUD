@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service definition'
+define service Zui_biblioteca_sdm {
+  expose ZC_biblioteca_sdm as Biblioteca;
+  expose ZC_LIBRO_SDM      as Libro;
+}

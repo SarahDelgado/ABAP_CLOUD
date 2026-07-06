@@ -1,0 +1,5 @@
+CLASS zbp_i_biblioteca_sdm DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_biblioteca_sdm.
+ENDCLASS.
+
+CLASS zbp_i_biblioteca_sdm IMPLEMENTATION.
+ENDCLASS.

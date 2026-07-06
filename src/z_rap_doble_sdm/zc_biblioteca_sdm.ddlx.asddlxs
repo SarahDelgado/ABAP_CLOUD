@@ -1,0 +1,86 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Biblioteca',
+    typeNamePlural: 'Bibliotecas',
+    title: { type: #STANDARD, value: 'Nombre' },
+    description: { type: #STANDARD, value: 'Responsable' }
+  }
+}
+annotate view ZC_biblioteca_sdm with
+{
+  /* --- Configuración de la Pantalla (Object Page) --- */
+  @UI.facet: [
+    {
+      id: 'DatosGenerales',
+      type: #COLLECTION,
+      label: 'Información de la Biblioteca',
+      position: 10
+    },
+    {
+      id: 'InfoBasica',
+      parentId: 'DatosGenerales',
+      type: #FIELDGROUP_REFERENCE,
+      label: 'Datos Básicos',
+      position: 10,
+      targetQualifier: 'GrupoBasico'
+    },
+    {
+      id: 'Contacto',
+      parentId: 'DatosGenerales',
+      type: #FIELDGROUP_REFERENCE,
+      label: 'Contacto',
+      position: 20,
+      targetQualifier: 'GrupoContacto'
+    },
+    {
+      id: 'Libros',
+      type: #LINEITEM_REFERENCE,
+      label: 'Catálogo de Libros',
+      position: 20,
+      targetElement: '_Libros'
+    }
+  ]
+
+  /* --- Campos --- */
+  @UI.hidden: true
+  BibliotecaId;
+
+  @EndUserText.label: 'Nombre de la Biblioteca'
+  @UI: { lineItem:       [ { position: 10 } ],
+         fieldGroup:     [ { qualifier: 'GrupoBasico', position: 10 } ],
+         selectionField: [ { position: 10 } ] }
+  Nombre;
+
+  @EndUserText.label: 'Responsable / Director'
+  @UI: { lineItem:       [ { position: 20 } ],
+         fieldGroup:     [ { qualifier: 'GrupoBasico', position: 20 } ],
+         selectionField: [ { position: 20 } ] }
+  Responsable;
+
+  @EndUserText.label: 'Fecha de Alta'
+  @UI: { fieldGroup:     [ { qualifier: 'GrupoBasico', position: 30 } ] }
+  FechaAlta;
+
+  @EndUserText.label: 'Estado Activa'
+  @UI: { lineItem:       [ { position: 30 } ],
+         fieldGroup:     [ { qualifier: 'GrupoBasico', position: 40 } ] }
+  Activa;
+
+  @EndUserText.label: 'Dirección Física'
+  @UI: { fieldGroup:     [ { qualifier: 'GrupoContacto', position: 10 } ] }
+  Direccion;
+
+  @EndUserText.label: 'Teléfono'
+  @UI: { lineItem:       [ { position: 40 } ],
+         fieldGroup:     [ { qualifier: 'GrupoContacto', position: 20 } ] }
+  Telefono;
+
+  @EndUserText.label: 'Correo Electrónico'
+  @UI: { lineItem:       [ { position: 50 } ],
+         fieldGroup:     [ { qualifier: 'GrupoContacto', position: 30 } ] }
+  Email;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}
