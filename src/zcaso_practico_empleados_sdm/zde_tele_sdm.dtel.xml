@@ -3,18 +3,18 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DD04V>
-    <ROLLNAME>ZDE_ID_SDM</ROLLNAME>
+    <ROLLNAME>ZDE_TELE_SDM</ROLLNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
-    <DOMNAME>ZDO_ID_SDM</DOMNAME>
+    <DOMNAME>ZDO_TELE_SDM</DOMNAME>
     <HEADLEN>55</HEADLEN>
     <SCRLEN1>10</SCRLEN1>
     <SCRLEN2>20</SCRLEN2>
     <SCRLEN3>40</SCRLEN3>
-    <DDTEXT>Elemento de datos ID</DDTEXT>
-    <REPTEXT>testamento bien largo para decir que esto es el id</REPTEXT>
-    <SCRTEXT_S>id</SCRTEXT_S>
-    <SCRTEXT_M>el id</SCRTEXT_M>
-    <SCRTEXT_L>este campo es el id</SCRTEXT_L>
+    <DDTEXT>Elemento de dato del telefono</DDTEXT>
+    <REPTEXT>Teléfono del empleado</REPTEXT>
+    <SCRTEXT_S>Tel</SCRTEXT_S>
+    <SCRTEXT_M>Teléfono</SCRTEXT_M>
+    <SCRTEXT_L>Teléfono del empleado</SCRTEXT_L>
     <DTELMASTER>E</DTELMASTER>
     <REFKIND>D</REFKIND>
     <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
